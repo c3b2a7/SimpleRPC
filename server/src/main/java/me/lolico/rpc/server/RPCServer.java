@@ -78,8 +78,7 @@ public class RPCServer implements Server {
         return running;
     }
 
-    @Override
-    public <T> Server register(Class<T> serviceInterface, Object impl) {
+    public <T> RPCServer register(Class<T> serviceInterface, Object impl) {
         if (serviceInterface.isAssignableFrom(impl.getClass())) {
             serviceRegistry.put(serviceInterface, impl);
         }

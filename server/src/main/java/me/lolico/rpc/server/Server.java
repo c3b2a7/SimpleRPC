@@ -13,5 +13,4 @@ public interface Server {
 
     boolean isRunning();
 
-    <T> Server register(Class<T> serviceInterface, Object impl);
 }

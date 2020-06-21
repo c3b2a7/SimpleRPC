@@ -52,6 +52,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.2.2.RELEASE</version>
                 <configuration>
+                    <!--<skip>true</skip>-->
                     <classifier>exec</classifier>
                 </configuration>
                 <executions>
