@@ -1,5 +1,9 @@
 # Simple RPC server and client
 
+[![Build Status](https://travis-ci.com/LOLICOL1/rpc-demo.svg?branch=master)](https://travis-ci.com/LOLICOL1/rpc-demo)
+[![codecov](https://codecov.io/gh/LOLICOL1/rpc-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/LOLICOL1/rpc-demo)
+[![GitHub](https://img.shields.io/github/license/lolicol1/rpc-demo)](https://github.com/LOLICOL1/rpc-demo/blob/master/LICENSE)
+
 > Demo with too many bugs 🙃
 
 ## Usage
@@ -31,7 +35,7 @@ Using "RPCClient" to get the remote proxy.
 ```java
 RPCClient client = new RPCClient("hostname", port); // hostname and port of RPC server.
 HelloWorld helloWorld = client.getRemoteProxy(HelloWorld.class);
-// Output on the server's terminal
+// Output in the server's terminal
 helloWorld.say("Hello Java!");
 Calculator calculator = client.getRemoteProxy(Calculator.class);
 // true
