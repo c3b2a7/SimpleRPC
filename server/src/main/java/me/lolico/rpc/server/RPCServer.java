@@ -7,7 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
 public class RPCServer implements Server {
     private final Logger logger = Logger.getLogger(RPCServer.class.getName());
 
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private final Map<Class<?>, Object> serviceRegistry = new HashMap<>();
     private boolean running;
     private final ServerSocket server;
@@ -43,22 +42,30 @@ public class RPCServer implements Server {
     public Server start() {
         String msg = "Server start at " + server.getInetAddress().getHostAddress() + ":" + getPort();
         logger.log(Level.INFO, msg);
+        executor.execute(this::doStart);
         running = true;
+        return this;
+    }
+
+    private void doStart() {
         try {
             //noinspection InfiniteLoopStatement
             while (true) {
                 executor.submit(new ServiceTask(server.accept()));
             }
         } catch (Exception ex) {
-            logger.log(Level.SEVERE, ex.getMessage(), ex);
+            if (running) {
+                logger.log(Level.SEVERE, ex.getMessage(), ex);
+            }
         } finally {
             stop();
         }
-        return this;
     }
 
     @Override
     public void stop() {
+        if (!running)
+            return;
         executor.shutdown();
         try {
             server.close();
@@ -90,7 +97,6 @@ public class RPCServer implements Server {
 
         public ServiceTask(Socket socket) {
             this.socket = socket;
-            SocketAddress socketAddress = socket.getRemoteSocketAddress();
         }
 
         @Override

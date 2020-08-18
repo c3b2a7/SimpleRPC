@@ -10,7 +10,7 @@ public class RPCServerTest {
 
     @Test
     public void register() {
-        new RPCServer(39000)
+        new RPCServer(30000)
                 .register(HelloWorld.class, new HelloWorldImpl())
                 .register(Calculator.class, new CalculatorImpl())
                 .start();
