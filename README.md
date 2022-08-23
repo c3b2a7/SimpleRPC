@@ -1,8 +1,8 @@
 # Simple RPC server and client
 
 [![Build Status](https://travis-ci.com/c3b2a7/SimpleRPC.svg?branch=master)](https://travis-ci.com/c3b2a7/SimpleRPC)
-[![codecov](https://codecov.io/gh/LOLICOL1/rpc-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/LOLICOL1/rpc-demo)
-[![GitHub](https://img.shields.io/github/license/lolicol1/rpc-demo)](https://github.com/LOLICOL1/rpc-demo/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/c3b2a7/SimpleRPC/branch/master/graph/badge.svg)](https://codecov.io/gh/c3b2a7/SimpleRPC)
+[![GitHub](https://img.shields.io/github/license/c3b2a7/SimpleRPC)](https://github.com/c3b2a7/SimpleRPC/blob/master/LICENSE)
 
 > Demo with too many bugs 🙃
 
